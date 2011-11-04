@@ -1,0 +1,15 @@
+Perl Apache Modules to capture post data for any request.
+
+Usage:
+
+Copy contents of lib directory to perl5 apache2 library location.
+
+Add something similar to httpd.conf:
+
+PerlModule Apache2::Filter::Input::CapturePost
+PerlInputFilterHandler  Apache2::Filter::Input::CapturePost::request
+PerlPostReadRequestHandler Apache2::Handler::RequestStart
+PerlSetVar CaptureLog /var/log/apache2/capture
+PerlLogHandler Apache2::Handler::LogCapture
+
+Replay tool for the logs will be available shortly.
