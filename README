@@ -21,6 +21,17 @@ To install this module, run the following commands:
 	make test
 	make install
 
+You'll need to modify you apache configuration to include the following
+lines:
+
+PerlModule Apache2::Filter::Input::CapturePost
+PerlInputFilterHandler  Apache2::Filter::Input::CapturePost::request
+PerlPostReadRequestHandler Apache2::Handlers::RequestStart
+PerlSetVar CaptureLog /var/log/apache2/capture
+PerlLogHandler Apache2::Handlers::LogCapture
+
+
+
 SUPPORT AND DOCUMENTATION
 
 After installing, you can find documentation for this module with the
