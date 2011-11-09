@@ -22,11 +22,11 @@ sub handler {
     my $date    = localtime;
     my $headers_as_string = ""; 
     foreach my $header (keys %{$headers}){
-       $headers_as_string = $headers_as_string . $header . ": " . $headers->{$header} . "\n";
+       $headers_as_string = $headers_as_string . $header . ": " . $headers->{$header} . "\b";
     }
 
     open(LOGFILE, ">>", $log_file );
-    my $log_string = "====\a" . $date . "\a" . $elapsed_time . "\a" . $bytes . "\a" . $request . "\a" . $headers_as_string . "\a" . $r->pnotes("post_data") . "\a"  . "\a" . $status . "\n";
+    my $log_string = $date . "\a" . $elapsed_time . "\a" . $bytes . "\a" . $status . "\a" . $request . "\a" . $headers_as_string . "\a" . $r->pnotes("post_data") . "\n";
     print LOGFILE  $log_string;
     close LOGFILE;
     return OK;

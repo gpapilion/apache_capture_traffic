@@ -1,0 +1,18 @@
+use LWP;
+
+
+my $ua = LWP::UserAgent->new;
+
+while(<>) {
+
+  my @capture_log = split("\a", $_); 
+  my @headers = split("\b", @capture_log[5]);
+  my ($method, $url) = split(" ", @capture_log[4]); 
+  my $req = HTTP::Request->new($method, $url);
+  foreach my $header  (@headers) {
+      my ($header_key, $header_value) = split(": ", $header); 
+      $req->header( $header_key => $header_value);
+  }
+  my $res = $ua->request($req);
+  print $res->content;
+}

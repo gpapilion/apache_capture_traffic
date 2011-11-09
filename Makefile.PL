@@ -11,7 +11,7 @@ WriteMakefile(
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
       ? ('LICENSE'=> 'perl')
       : ()),
-    PL_FILES            => {},
+    PL_FILES            => {'bin/replay_apache.pl' => 'bin/replay_apache'},
     PREREQ_PM => {
         'Test::More' => 0,
 	'Apache2::RequestUtil' => 0,
