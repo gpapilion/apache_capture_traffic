@@ -1,8 +1,8 @@
 package Apache2::Filter::Input::CapturePost;
-  
+
+use 5.006;
 use strict;
 use warnings;
-
 use base qw(Apache2::Filter);
 use Apache2::FilterRec ();
 use APR::Brigade ();
@@ -53,3 +53,84 @@ sub copy_post {
     $f->r->pnotes( "post_data" => $request_string);
 }
 1;
+
+=head1 NAME
+
+Apache2::Filter::Input::CapturePost - Captures post data from Apache and adds it to pnotes on Apache::RequestUtil object
+
+=head1 VERSION
+
+Version 0.01
+
+=cut
+
+our $VERSION = '0.01';
+
+
+=head1 SYNOPSIS
+
+This module captures post data, and adds it the the $request->pnotes data structure 
+
+This is intended for use as an apache Input filter modules
+
+
+=head1 AUTHOR
+
+Geoffrey Papilion, C<< <papilion at hypergeometric.com> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests to C<bug-apache2-handlers-logcapture at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Apache2-Handlers-LogCapture>.  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+
+
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Apache2::Filter::Input::CapturePost
+
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker (report bugs here)
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Apache2-Handlers-LogCapture>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Apache2-Handlers-LogCapture>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Apache2-Handlers-LogCapture>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Apache2-Handlers-LogCapture/>
+
+=back
+
+
+=head1 ACKNOWLEDGEMENTS
+
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2011 Geoffrey Papilion.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See http://dev.perl.org/licenses/ for more information.
+
+
+=cut
+
+1; # End of Apache2::Filter::Input::CapturePost
